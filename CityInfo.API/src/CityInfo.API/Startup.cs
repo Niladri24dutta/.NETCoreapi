@@ -15,6 +15,7 @@ namespace CityInfo.API
        
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
@@ -30,15 +31,9 @@ namespace CityInfo.API
                 app.UseExceptionHandler(); // UseExceptionHandler for production else show dev friendly message
             }
 
-            app.Run((context) =>
-            {
-                throw new Exception("example exception");
-            });
+            app.UseMvc();
+           
 
-            //app.Run(async (context) =>
-            //{
-            //    await context.Response.WriteAsync("Hello World!");
-            //});
         }
     }
 }
